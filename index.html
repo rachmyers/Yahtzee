@@ -1,0 +1,205 @@
+<!--
+    Name: Rachel Myers
+    Class: CIS 131
+    Section: W01
+    Date: 10/8/2020
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Yahtzee</title>
+</head>
+
+<body>
+
+    <header>
+        <img src="images/logo.gif" alt="">
+        <button type="button" id="btNewGame">New Game</button>
+        <button type="button" id="btRoll">Roll</button>
+        <button type="button" id="btKeepScore">Keep Score</button>
+    </header>
+    
+    <div id="scoresheet">
+    <!--Table is styled after Yahtzee score sheet at https://www.eecis.udel.edu/~davis/yahtzee.pdf-->
+    <table>
+        <tr style="background-color: gray;">
+            <th>UPPER SECTION</th>
+            <th>How to Score</th>
+            <th>Select Score Type</th>
+            <th>Your Points</th>
+        </tr>
+        <tr>
+            <th>Aces <img src="images/thumbnail_1.jpg" alt="ace" class="thumbnail"> = 1</th>
+            <td>Count and add only ones</td>
+            <td id="ones"><input type="radio" name="score" value="1"></td>
+            <td id="ones_points"></td>
+        </tr>
+        <tr>
+            <th>Twos <img src="images/thumbnail_2.jpg" alt="" class="thumbnail">  = 2</th>
+            <td>Count and add only twos</td>
+            <td id="twos"><input type="radio" name="score" id="rbTwos" value="2"></td>
+            <td id="twos_points"></td>
+        </tr>
+        <tr>
+            <th>Threes <img src="images/thumbnail_3.jpg" alt="" class="thumbnail"> = 3</th>
+            <td>Count and add only threes</td>
+            <td id="threes"><input type="radio" name="score" id="rbThrees" value="3"></td>
+            <td id="threes_points"></td>
+        </tr>
+        <tr>
+            <th>Fours <img src="images/thumbnail_4.jpg" alt="" class="thumbnail"> = 4</th>
+            <td>Count and add only fours</td>
+            <td id="fours"><input type="radio" name="score" id="rbFours" value="4"></td>
+            <td id="fours_points"></td>
+        </tr>
+        <tr>
+            <th>Fives <img src="images/thumbnail_5.jpg" alt="" class="thumbnail"> = 5</th>
+            <td>Count and add only fives</td>
+            <td id="fives"><input type="radio" name="score" id="rbFives" value="5"></td>
+            <td id="fives_points"></td>
+        </tr>
+        <tr>
+            <th>Sixes <img src="images/thumbnail_6.jpg" alt="" class="thumbnail"> = 6</th>
+            <td>Count and add only sixes</td>
+            <td id="sixes"><input type="radio" name="score" id="rbSixes" value="6"></td>
+            <td id="sixes_points"></td>
+        </tr>
+        <tr>
+            <th>Total Score</th>
+            <td></td>
+            <td></td>
+            <td id="upperSubTotal"></td>
+        </tr>
+        <tr>
+            <th>Bonus (if score is > 63)</th>
+            <td>Score +35</td>
+            <td id="upperBonusCheck"></td>
+            <td id="upperBonus"></td>
+        </tr>
+        <tr>           
+            <th>Total Score of Upper Section</th>
+            <td></td>
+            <td></td>
+            <td class="upperTotal"></td>
+        </tr>
+
+        <tr style="background-color: black;">
+            <td><br></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr style="background-color: gray;">
+            <th>LOWER SECTION</th>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>3 of a Kind</th>
+            <td>Add Total of Dice</td>
+            <td id="threeKind"><input type="radio" name="score" id="rbThreeKind" value="threeOfAKind"></td>
+            <td id="threeKindTotal"></td>          
+        </tr>
+
+        <tr>
+            <th>4 of a Kind</th>
+            <td>Add Total of Dice</td>
+            <td id="fourKind"><input type="radio" name="score" id="rbFourKind" value="fourOfAKind"></td>
+            <td id="fourKindTotal"></td>
+        </tr>
+
+        <tr>
+            <th>Fullhouse</th>
+            <td>Worth 25 points</td>
+            <td id="fullhouse"><input type="radio" name="score" id="rbFullhouse" value="fullhouse"></td>
+            <td id="fullhouseTotal"></td>
+        </tr>
+
+        <tr><th>Small Straight (sequ. of 4)</th>
+            <td>Worth 30 points</td>
+            <td id="smStraight"><input type="radio" name="score" id="rbSmStraight" value="smStraight"></td>
+            <td id="smStraightTotal"></td>
+        </tr>
+
+        <tr>
+            <th>Large Straight (sequ. of 5)</th>
+            <td>Worth 40 points</td>
+            <td id="lgStraight"><input type="radio" name="score" id="rbLgStraight" value="lgStraight"></td>
+            <td id="lgStraightTotal"></td>
+        </tr>
+
+        <tr>
+            <th>YAHTZEE (5 of a kind)</th>
+            <td>Worth 50 points</td>
+            <td id="yahtzee"><input type="radio" name="score" id="rbYahtzee" value="yahtzee"></td>
+            <td id="yahtzeeTotal"></td>
+        </tr>
+
+        <tr>
+            <th>Chance</th>
+            <td>Add All Dice</td>
+            <td id="chance"><input type="radio" name="score" id="rbChance" value="chance"></td>
+            <td id="chanceTotal"></td>
+        </tr>
+
+
+        <tr>           
+            <th>Total Score of Lower Section</th>
+            <td></td>
+            <td></td>
+            <td id="lowerTotal"></td>
+        </tr>
+
+        <tr>           
+            <th>Total Score of Upper Section</th>
+            <td></td>
+            <td></td>
+            <td class="upperTotal"></td>
+        </tr>
+
+        <tr>           
+            <th>Grand Total</th>
+            <td></td>
+            <td></td>
+            <td id="grandTotal"></td>
+        </tr>
+    </table>
+</div>
+
+    <div id="cup">
+        <p>Begin by clicking Roll. Select the Score Type, and then click Keep Score. You get 3 rolls per turn.</p>
+        <img src="images/cup2.png" alt="Yahtzee cup">
+    </div>
+    
+
+    <div class="container" id="diceContainer">
+        <div class="row">
+            <div class="col-sm-">
+                <img src="images/1.png" alt="" class="dice" id="firstDice">
+            </div>
+            <div class="col-sm-">
+                <img src="images/2.png" alt="" class="dice" id="secondDice">
+            </div>
+            <div class="col-sm-">
+                <img src="images/3.png" alt="" class="dice" id="thirdDice">
+            </div>
+            <div class="col-sm-">
+                <img src="images/4.png" alt="" class="dice" id="fourthDice">
+            </div>
+            <div class="col-sm-">
+                <img src="images/5.png" alt="" class="dice" id="fifthDice">
+            </div>
+        </div>
+    </div>
+
+  
+
+    <script src="script.js"></script>
+</body>
+</html>
